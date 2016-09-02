@@ -5,6 +5,7 @@ var squareSize = 50;
 var letterArray = ["A","B","C","D","E","F","G","H","I","J"];
 var fireLocation;
 var letter;
+var letterSpot;
 var number;
 // gets the container element
 var gameBoardContainer = document.getElementById("gameboard");
@@ -67,9 +68,15 @@ function fireTorpedo() {
 	// Your game logic will go here!
 	fireLocation = document.getElementById("input").value;
 	letter = fireLocation.substring(0, 1);
-	number = fireLocation.substring(1, 3);
-	document.getElementById("s"+ letterConversion[letter] + (number-1)).style.backgroundColor = "red";
-	console.log(letterConversion[letter] + " " + letter + " " + number);
+	number = fireLocation.substring(1, 3) -1;
+	letterSpot = letterConversion[letter];
+	if(gameBoard[letterSpot][number] == 0){
+		document.getElementById("s"+ letterSpot + (number)).style.backgroundColor = "grey";
+	}
+	else{
+		document.getElementById("s"+ letterSpot + (number)).style.backgroundColor = "red";
+	}
+
 	document.getElementById("input").value = null;
 
 }
