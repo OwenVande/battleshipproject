@@ -7,13 +7,16 @@ var fireLocation;
 var letter;
 var letterSpot;
 var number;
+var hits = 0;
+var hitCount = 17
+//var message;
 // gets the container element
 var gameBoardContainer = document.getElementById("gameboard");
 
 // you can use this to convert your letters into numbers for use
 // with the 2D array
 var letterConversion = {
-	"A": 0,
+	"A": 0, //uppercase
 	"B": 1,
 	"C": 2,
 	"D": 3,
@@ -22,7 +25,17 @@ var letterConversion = {
 	"G": 6,
 	"H": 7,
 	"I": 8,
-	"J": 9
+	"J": 9,
+	"a": 0, //lowercase
+	"b": 1,
+	"c": 2,
+	"d": 3,
+	"e": 4,
+	"f": 5,
+	"g": 6,
+	"h": 7,
+	"i": 8,
+	"j": 9
 }
 
 // makes the grid columns and rows
@@ -39,7 +52,6 @@ for (i = 0; i < cols; i++) {
 
 		// THIS IS WHERE YOU WILL ADD CODE FOR PART 1 TO ADD TEXT TO EACH SQUARE
 		square.textContent = letterArray[j] + (i + 1);
-
 		// set each grid square's coordinates: multiples of the current row or column number
 		var topPosition = j * squareSize;
 		var leftPosition = i * squareSize;
@@ -67,16 +79,28 @@ var gameBoard = [
 function fireTorpedo() {
 	// Your game logic will go here!
 	fireLocation = document.getElementById("input").value;
-	letter = fireLocation.substring(0, 1);
-	number = fireLocation.substring(1, 3) -1;
-	letterSpot = letterConversion[letter];
+	letter = fireLocation.substring(0, 1); // get location of letter
+	number = fireLocation.substring(1, 3) -1; // get location of number
+	letterSpot = letterConversion[letter]; // converts letter to point
+
 	if(gameBoard[letterSpot][number] == 0){
-		document.getElementById("s"+ letterSpot + (number)).style.backgroundColor = "grey";
+		document.getElementById("s"+ letterSpot + number).style.backgroundColor = "grey";
+		document.getElementById("line2").textContent = "Miss..."; //if miss
 	}
-	else{
-		document.getElementById("s"+ letterSpot + (number)).style.backgroundColor = "red";
+	else if(gameBoard[letterSpot][number] == 1 && document.getElementById("s"+ letterSpot + number).style.backgroundColor != "red"){
+		document.getElementById("s"+ letterSpot + (number)).style.backgroundColor = "red"; //if hit
+		document.getElementById("info").textContent = hitCount + " hits left.";
+		document.getElementById("line2").textContent = "Hit!";
+		hits++;
+		hitCount--;
+	}
+
+	document.getElementById("info").textContent = hitCount + " hits left.";
+
+
+	if(hits >= 17){
+		gameBoardContainer.textContent = "YOU HAVE SUNK ALL MY BATTLESHIPS!"
 	}
 
 	document.getElementById("input").value = null;
-
 }
