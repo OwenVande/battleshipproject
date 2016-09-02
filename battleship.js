@@ -67,8 +67,9 @@ function fireTorpedo() {
 	// Your game logic will go here!
 	fireLocation = document.getElementById("input").value;
 	letter = fireLocation.substring(0, 1);
-	number = fireLocation.substring(1, 2);
-	letterConversion[letter];
+	number = fireLocation.substring(1, 3);
+	document.getElementById("s"+ letterConversion[letter] + (number-1)).style.backgroundColor = "red";
+	console.log(letterConversion[letter] + " " + letter + " " + number);
 	document.getElementById("input").value = null;
 
 }
