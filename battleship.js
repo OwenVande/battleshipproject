@@ -52,6 +52,8 @@ for (i = 0; i < cols; i++) {
 
 		// THIS IS WHERE YOU WILL ADD CODE FOR PART 1 TO ADD TEXT TO EACH SQUARE
 		square.textContent = letterArray[j] + (i + 1);
+		square.style.backgroundColor = "blue";
+		square.style.color = "white";
 		// set each grid square's coordinates: multiples of the current row or column number
 		var topPosition = j * squareSize;
 		var leftPosition = i * squareSize;
@@ -84,7 +86,8 @@ function fireTorpedo() {
 	letterSpot = letterConversion[letter]; // converts letter to point
 
 	if(gameBoard[letterSpot][number] == 0){
-		document.getElementById("s"+ letterSpot + number).style.backgroundColor = "grey";
+		document.getElementById("s"+ letterSpot + number).style.backgroundColor = "white";
+		document.getElementById("s"+ letterSpot + number).style.color = "black";
 		document.getElementById("line2").textContent = "Miss..."; //if miss
 	}
 	else if(gameBoard[letterSpot][number] == 1 && document.getElementById("s"+ letterSpot + number).style.backgroundColor != "red"){
