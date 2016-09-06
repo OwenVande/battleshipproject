@@ -2,7 +2,7 @@ body {
     margin: 60px auto;
     width: 70%;
     max-width: 950px;
-    background-color: grey;
+    background-color: black;
 }
 
 h1 {
@@ -45,4 +45,8 @@ p, button, input {
   position:relative;
   margin:0 auto 2em auto;
   width:500px;
+}
+
+.wtext{
+  color: white;
 }
