@@ -85,25 +85,25 @@ function fireTorpedo() {
 	number = fireLocation.substring(1, 3) -1; // get location of number
 	letterSpot = letterConversion[letter]; // converts letter to point
 
-	if(gameBoard[letterSpot][number] == 0){
+	if(gameBoard[letterSpot][number] == 0){ //if miss
 		document.getElementById("s"+ letterSpot + number).style.backgroundColor = "white";
 		document.getElementById("s"+ letterSpot + number).style.color = "black";
-		document.getElementById("line2").textContent = "Miss..."; //if miss
+		document.getElementById("line2").textContent = "Miss...";
 	}
-	else if(gameBoard[letterSpot][number] == 1 && document.getElementById("s"+ letterSpot + number).style.backgroundColor != "red"){
-		document.getElementById("s"+ letterSpot + (number)).style.backgroundColor = "red"; //if hit
+	else if(gameBoard[letterSpot][number] == 1 && document.getElementById("s"+ letterSpot + number).style.backgroundColor != "red"){ //if hit
+		document.getElementById("s"+ letterSpot + number).style.backgroundColor = "red";
 		document.getElementById("info").textContent = hitCount + " hits left.";
 		document.getElementById("line2").textContent = "Hit!";
-		hits++;
-		hitCount--;
+		hits++; //closer to winning
+		hitCount--; //lower display
 	}
 
-	document.getElementById("info").textContent = hitCount + " hits left.";
+	document.getElementById("info").textContent = hitCount + " hits left."; //add text to board
 
 
 	if(hits >= 17){
-		gameBoardContainer.textContent = "YOU HAVE SUNK ALL MY BATTLESHIPS!"
+		gameBoardContainer.textContent = "YOU HAVE SUNK ALL MY BATTLESHIPS!" //gameover message
 	}
 
-	document.getElementById("input").value = null;
+	document.getElementById("input").value = null; //clear the textbox
 }
