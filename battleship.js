@@ -101,7 +101,7 @@ function fireTorpedo() {
 	document.getElementById("info").textContent = hitCount + " hits left."; //add text to board
 
 
-	if(hits >= 1){
+	if(hits >= 17){
 		gameBoardContainer.textContent = "YOU HAVE SUNK ALL MY BATTLESHIPS!"; //gameover message
 		document.getElementById("info").innerHTML = "<br><button onclick="+"reloadPage()"+">Play Again</button>";
 	}
